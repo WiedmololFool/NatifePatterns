@@ -1,16 +1,21 @@
 package com.max.natifepatterns.singleton;
 
-public class SingletonJava
-{
-    private static SingletonJava instance;
+public class SingletonJava {
+
+    private volatile static SingletonJava INSTANCE;
     public String value;
 
-    private SingletonJava(String value){
-        this.value = value;
+    private SingletonJava() {
     }
 
-    public static SingletonJava getInstance(String value){
-        if (instance == null) instance = new SingletonJava(value);
-        return  instance;
+    public static SingletonJava getInstance() {
+        if (INSTANCE == null) {
+            synchronized (SingletonJava.class) {
+                if (INSTANCE == null) {
+                    INSTANCE = new SingletonJava();
+                }
+            }
+        }
+        return INSTANCE;
     }
 }

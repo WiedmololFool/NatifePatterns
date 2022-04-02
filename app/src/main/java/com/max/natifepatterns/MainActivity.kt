@@ -24,7 +24,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         //SingletonJava
-        Log.e(Constants.TAG, SingletonJava.getInstance("Value of Singleton Java").value )
+        SingletonJava.getInstance().value = "Value of Singleton Java"
+        Log.e(Constants.TAG, SingletonJava.getInstance().value )
 
         //SingletonKotlin
         SingletonKotlin.value = "Value of Singleton Kotlin"
