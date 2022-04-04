@@ -2,18 +2,22 @@ package com.max.natifepatterns.singleton
 
 class SingletonKotlin private constructor() {
 
+    var value: String = ""
+
     companion object {
 
-        private var instance: SingletonKotlin? = null
-
         @Volatile
-        var value: String = ""
+        private var INSTANCE: SingletonKotlin? = null
 
-        operator fun invoke() = synchronized(this) {
-            if (instance == null) {
-                instance = SingletonKotlin()
+        fun getInstance(): SingletonKotlin? {
+            if (INSTANCE == null) {
+                synchronized(this) {
+                    if (INSTANCE == null) {
+                        INSTANCE = SingletonKotlin()
+                    }
+                }
             }
-            instance
+            return INSTANCE
         }
     }
 }
