@@ -9,7 +9,7 @@ class SingletonKotlin private constructor() {
         @Volatile
         private var INSTANCE: SingletonKotlin? = null
 
-        fun getInstance(): SingletonKotlin? {
+        fun getInstance(): SingletonKotlin {
             if (INSTANCE == null) {
                 synchronized(this) {
                     if (INSTANCE == null) {
@@ -17,7 +17,7 @@ class SingletonKotlin private constructor() {
                     }
                 }
             }
-            return INSTANCE
+            return INSTANCE!!
         }
     }
 }

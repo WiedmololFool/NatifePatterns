@@ -28,8 +28,8 @@ class MainActivity : AppCompatActivity() {
         Log.e(Constants.TAG, SingletonJava.getInstance().value )
 
         //SingletonKotlin
-        SingletonKotlin.getInstance()?.value = "Value of Singleton Kotlin"
-        SingletonKotlin.getInstance()?.let { Log.e(Constants.TAG, it.value ) }
+        SingletonKotlin.getInstance().value = "Value of Singleton Kotlin"
+        Log.e(Constants.TAG, SingletonKotlin.getInstance().value )
 
         //Adapter
         val simpleAmericanSocket = SimpleAmericanSocket()
